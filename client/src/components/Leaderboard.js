@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+// import "./Leaderboard.css";
 
 const Leaderboard = () => {
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ const Leaderboard = () => {
   }, []);
 
   return (
-    <div className="container my-5">
+    <div className="leaderboard container my-5">
       <div className="card">
         <h2 className="card-header">Top 100 Players</h2>
         <div className="card-body">

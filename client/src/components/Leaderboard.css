@@ -1,13 +1,5 @@
-// .leaderboard {
-//   margin-top: 50px;
-// }
-
-// .leaderboard ul {
-//   list-style-type: none;
-//   padding: 0;
-// }
-
-// .leaderboard li {
-//   font-size: 18px;
-//   margin: 5px 0;
-// }
+.leaderboard {
+  position: relative;
+  background: url("../assets/img/bg2.png") no-repeat center center/cover;
+  overflow: hidden;
+}
