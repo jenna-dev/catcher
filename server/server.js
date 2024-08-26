@@ -4,10 +4,10 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const leaderboardRoutes = require("./v1/routes/leaderboardRoutes");
 const path = require("path");
-const apicache = require("apicache");
+// const apicache = require("apicache");
 
 const app = express();
-const cache = apicache.middleware;
+// const cache = apicache.middleware;
 const PORT = process.env.PORT || 5001;
 
 // Enable CORS middleware
@@ -20,7 +20,7 @@ app.use(cors());
 //   })
 // );
 app.use(bodyParser.json());
-app.use(cache("2 minutes"));
+// app.use(cache("2 minutes"));
 app.use("/api/v1/leaderboard", leaderboardRoutes);
 
 const mongodbUri =

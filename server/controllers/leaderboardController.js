@@ -10,16 +10,14 @@ exports.getTopScores = async (req, res) => {
 };
 
 exports.addScore = async (req, res) => {
-  console.log(req.body);
-
-  const { username, score } = req.body;
-  const newScore = new Score({ username, score });
-  console.log(newScore);
-
   try {
+    const { username, score } = req.body;
+    console.log("Received score submission:", { username, score });
+    const newScore = new Score({ username, score });
     await newScore.save();
     res.status(201).json(newScore);
   } catch (err) {
-    res.status(400).json({ message: err.message });
+    console.error("Error saving score:", err);
+    res.status(400).json({ message: "Error saving score" });
   }
 };

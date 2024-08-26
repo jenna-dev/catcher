@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
-import Menu from "./components/Menu";
+import StartMenu from "./components/StartMenu";
 import Game from "./components/Game";
 import Leaderboard from "./components/Leaderboard";
 import GameOver from "./components/GameOver";
@@ -11,10 +11,10 @@ const App = () => {
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/" element={<Menu />} />
+          <Route path="/" element={<StartMenu />} />
           <Route path="/game" element={<Game />} />
           <Route path="/leaderboard" element={<Leaderboard />} />
-          <Route path="/gameover" element={<GameOver />} />
+          {/* <Route path="/gameover" element={<GameOver />} /> */}
         </Routes>
       </Router>
     </div>

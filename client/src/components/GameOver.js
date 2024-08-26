@@ -1,68 +1,71 @@
 import React, { useState } from "react";
 import axios from "axios";
-import Leaderboard from "./Leaderboard";
 import { useNavigate } from "react-router-dom";
 
 const GameOver = ({ score }) => {
-  const [formData, setFormData] = useState({ username: "", errors: {} });
+  const [username, setUsername] = useState("");
+  const [error, setError] = useState("");
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const navigate = useNavigate();
-  // const [score, setScore] = useState({ score });
 
-  const validateForm = () => {
-    const errors = {};
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    // Check if username is empty
-    if (!formData.username) {
-      errors.username = "Username is required";
+    if (!username.trim()) {
+      setError("Please enter your username");
+      return;
     }
 
-    setFormData((prevState) => ({ ...prevState, errors }));
-
-    // Return true if there are no errors
-    return Object.keys(errors).length === 0;
-  };
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormData((prevState) => ({ ...prevState, [name]: value }));
-  };
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    if (validateForm()) {
-      try {
-        await axios.post("http://localhost:5001/api/v1/leaderboard", {
-          username: formData.username,
-          score,
-        });
-        setFormData({ username: "", errors: {} });
-        navigate("/leaderboard");
-      } catch (err) {
-        console.error(err);
-      }
+    try {
+      await axios.post("http://localhost:5001/api/v1/leaderboard", {
+        username,
+        score,
+      });
+      setIsSubmitted(true);
+      navigate("/leaderboard");
+    } catch (err) {
+      setError("Error submitting score. Please try again.");
+      console.error(err);
     }
   };
 
-  return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <h1>Game Over!</h1>
-        <p>Final Score: {score}</p>
-        <label>
-          Username:
-          <input
-            type="text"
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
-          />
-        </label>
-        <input className="btn btn-warning" type="submit" value="Submit" />
-        {formData.errors.username && (
-          <p style={{ color: "red" }}>{formData.errors.username}</p>
-        )}
-      </form>
-    </>
+  return isSubmitted ? (
+    <div className="container d-flex justify-content-center align-items-center vh-100">
+      <div className="text-center">
+        <h2 className="text-success">Submitting your score...</h2>
+      </div>
+    </div>
+  ) : (
+    <div className="container vh-100 my-5">
+      <div className="card text-center shadow-lg">
+        <div className="card-header bg-danger text-white">
+          <h1 className="card-title">Game Over!</h1>
+        </div>
+        <div className="card-body">
+          <p className="card-text">
+            Final Score: <strong className="display-4">{score}</strong>
+          </p>
+          <form onSubmit={handleSubmit}>
+            <div className="form-group mb-3">
+              <label htmlFor="username" className="form-label">
+                Enter your username:
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+            </div>
+            {error && <div className="alert alert-danger">{error}</div>}
+            <button type="submit" className="btn btn-primary btn-lg">
+              Submit Score
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
   );
 };
 
