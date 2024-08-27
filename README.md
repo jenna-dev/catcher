@@ -1,8 +1,8 @@
 # Catch Game Web Application
 
 [Project Description]
-Game: A catch game that able to move the catcher left and right to catch the items. 
-Leaderboard: Display the top 100 players score.
+- Game: A catch game that able to move the catcher left and right to catch the items. 
+- Leaderboard: Display the top 100 players score.
 
 ## Prerequisites
 
@@ -13,10 +13,8 @@ Leaderboard: Display the top 100 players score.
 ## Installation
 
 1. Clone the repository:
-git clone [https://github.com/your-username/your-repo.git](https://github.com/jenna-dev/catcher.git]
+git clone [https://github.com/jenna-dev/catcher.git]
 
-
-Copy
 2. Install dependencies for the frontend and backend:
 cd your-repo
 cd client
@@ -28,8 +26,13 @@ npm install
 3. Set up environment variables:
 - Create a `.env` file in the root directory of the project.
 - replace mongoDB connection string
+
 4. Start the development server:
-npm run dev
+cd client
+npm start
+
+cd server
+npm start
 
 ## Project Structure
 
