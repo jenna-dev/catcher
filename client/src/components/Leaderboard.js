@@ -12,7 +12,9 @@ const Leaderboard = () => {
   useEffect(() => {
     const fetchLeaderboard = async () => {
       try {
-        const res = await axios.get("http://localhost:5001/api/v1/leaderboard");
+        const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
+        const res = await axios.get(`${API_BASE_URL}/api/v1/leaderboard`);
         setScores(res.data);
         setIsLoading(false);
       } catch (err) {

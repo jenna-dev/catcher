@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
-import axios from "axios";
+import React, { useState, useEffect } from "react";
 import GameOver from "./GameOver";
 import "./Game.css";
 import boatImg from "../assets/img/boat.png";

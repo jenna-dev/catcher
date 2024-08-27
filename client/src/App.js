@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import StartMenu from "./components/StartMenu";
 import Game from "./components/Game";
 import Leaderboard from "./components/Leaderboard";
-import GameOver from "./components/GameOver";
 
 const App = () => {
   return (

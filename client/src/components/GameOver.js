@@ -18,7 +18,9 @@ const GameOver = ({ score }) => {
     }
 
     try {
-      await axios.post("http://localhost:5001/api/v1/leaderboard", {
+      const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
+      await axios.post(`${API_BASE_URL}/api/v1/leaderboard`, {
         username,
         score,
       });
