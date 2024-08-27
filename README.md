@@ -16,23 +16,23 @@
 git clone [https://github.com/jenna-dev/catcher.git]
 
 2. Install dependencies for the frontend and backend:
-cd your-repo
-cd client
-npm install
+- cd your-repo
+- cd client
+- npm install
 
-cd server
-npm install
+- cd server
+- npm install
 
 3. Set up environment variables:
 - Create a `.env` file in the root directory of the project.
 - replace mongoDB connection string
 
 4. Start the development server:
-cd client
-npm start
+- cd client
+- npm start
 
-cd server
-npm start
+- cd server
+- npm start
 
 ## Project Structure
 
