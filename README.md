@@ -27,10 +27,10 @@
 
 3. Set up environment variables:
 
-- Create a `.env` file in the `client` directory of the project.
-- replace mongoDB connection string
+- Create a `.env.example` file to `.env` in the `client` directory of the project.
+- replace REACT_APP_API_BASE_URL to backend api base URL
 
-- Create a `.env` file in the `server` directory of the project.
+- copy `.env.example` fil to `.env` in the `server` directory of the project.
 - add MONGODB_URI to your mongoDB connection string
 
 4. Start the development server:
