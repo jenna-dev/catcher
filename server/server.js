@@ -23,11 +23,8 @@ app.use(bodyParser.json());
 // app.use(cache("2 minutes"));
 app.use("/api/v1/leaderboard", leaderboardRoutes);
 
-const mongodbUri =
-  "mongodb+srv://jennachandev:Jenna1105@cluster0.yteld.mongodb.net/";
-
 mongoose
-  .connect(mongodbUri, {})
+  .connect(process.env.MONGODB_URI, {})
   .then(() => console.log("Connected to MongoDB"))
   .catch((error) => console.error("Connection error", error));
 
